@@ -1,18 +1,13 @@
-<html>
-	<head>
-		<title>W2CTD Blog</title>
-	</head>
+	 {% extends 'blog/base.html' %}
 
-	 <body>
-            <div>
-                <h1><a href="">W2CTD Blog</a></h1>
-            </div>
+     {% block content %}
        {% for post in posts %}     
-          <div>
+          <div class="post">
+            <div class="date">
               <p>Publicado: {{ post.fecha_publicacion }}</p>
-              <h1><a href="">{{ post.titulo }}</a></h1>
+          </div>
+              <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.titulo }}</a></h1>
               <p>{{ post.texto|linebreaksbr }}</p>
           </div>
-       {% endfor %}  
-        </body>
-</html>
+       {% endfor %}
+     {% endblock %}
